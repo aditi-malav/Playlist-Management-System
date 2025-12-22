@@ -1,43 +1,43 @@
 # Playlist-Management-System
-*(Linked List Validation & Undo — C++)*
-
----
 
 ## Overview
-- Implemented a playlist management system using a **singly linked list** in C++
-- Focused on **data structure correctness, memory safety, and state recovery**
-- Designed as a **system-oriented project**, emphasizing internal integrity over UI complexity
+A C++ playlist management system implemented using a **singly linked list**.
+The project focuses on **correctness, safe transformations, and state recovery**
+rather than UI complexity.
 
 ---
 
-## Core Idea
-- Model a playlist as a linked structure that undergoes multiple transformations
-- Ensure the structure remains valid and recoverable after changes
-- Distinguish clearly between:
-  - **User-level operations** (playlist manipulation)
-  - **System-level logic** (structural validation and safety)
+## Design Philosophy
+- Treat the playlist as a **mutable linked structure**
+- Separate **user operations** from **system-level validation**
+- Prioritize **data safety and recoverability** after transformations
 
 ---
 
-## Loop Detection (System-Level Validation)
-- Implemented **Floyd’s Cycle Detection Algorithm**
-- Added utilities to:
-  - detect a loop in the playlist
-  - find the starting node of the loop
-  - compute loop length
-- Loops are **not created through user input**
-- Treated as a **system-level safety feature** to detect structural corruption
-- Aligned with how linked list cycle problems are modeled on platforms like **LeetCode**
+## Core Features
+- Add / delete songs at any position
+- Shuffle, reverse, and de-duplicate playlist
+- Undo support using **state snapshots**
+- Loop detection using **Floyd’s Cycle Detection Algorithm**
+- Explicit memory management to avoid leaks
 
 ---
 
-## Undo Mechanism (State Recovery)
-- Implemented undo using **state restoration**, not inverse operations
-- Before each transformation:
-  - a **deep copy snapshot** of the playlist is stored
-- Snapshots managed using a **stack**
+## Undo Mechanism
+- Undo is implemented via **deep copy snapshots**
+- Before every transformation, the current playlist state is saved
 - Undo restores the most recent valid state
-- All unused states are explicitly freed to avoid memory leaks
+- Prevents reliance on inverse operations
+
+---
+
+## Loop Detection
+- Detects cycles using Floyd’s algorithm
+- Can identify:
+  - whether a loop exists
+  - starting node of the loop
+  - loop length
+- Implemented as a **structural safety check**, not user input behavior
 
 ---
 
@@ -109,15 +109,10 @@
 ---
 
 ## Conclusion
+A system-oriented C++ project that emphasizes safe linked list transformations,
+structural validation, and state recovery through undo.
 
-This project demonstrates a system-oriented approach to linked list design in C++.  
-Rather than focusing only on functionality, it emphasizes **correctness, safety, and recoverability**.
 
-By separating user operations from system-level validation and using state-based undo,
-the project reflects real-world engineering practices used in low-level systems.
-
-It serves as a strong foundation for understanding data structure integrity,
-memory management, and defensive programming.
 
 
 
