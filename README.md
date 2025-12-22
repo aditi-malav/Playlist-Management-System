@@ -1,70 +1,93 @@
-# Playlist-Management-System
+# Playlist-Management-System (C++)
 
 ## Overview
-A C++ playlist management system implemented using a **singly linked list**.
-The project focuses on **correctness, safe transformations, and state recovery**
+A menu-driven playlist management system implemented using a singly linked list.
+The project emphasizes **structural correctness, controlled mutations, and safe state recovery**
 rather than UI complexity.
 
 ---
 
-## Design Philosophy
-- Treat the playlist as a **mutable linked structure**
-- Separate **user operations** from **system-level validation**
-- Prioritize **data safety and recoverability** after transformations
+## Code Organization & Responsibilities
+
+### `playlist.h`
+- Defines the `Node` structure representing a song
+- Declares all playlist operations and system utilities
+- Acts as the contract between user interaction and core logic
 
 ---
 
-## Core Features
-- Add / delete songs at any position
-- Shuffle, reverse, and de-duplicate playlist
-- Undo support using **state snapshots**
-- Loop detection using **Floyd’s Cycle Detection Algorithm**
-- Explicit memory management to avoid leaks
+### `playlist.cpp` — Core Logic
+Contains all linked list operations and system-level utilities.
 
 ---
 
-## Undo Mechanism
-- Undo is implemented via **deep copy snapshots**
-- Before every transformation, the current playlist state is saved
-- Undo restores the most recent valid state
-- Prevents reliance on inverse operations
+#### Playlist Construction & Modification
+- `addSongAtHead`
+- `addSongAtEnd`
+- `addSongBefore`
+- `addSongAfter`
+- `deleteSong`
+
+These functions mutate the linked list while maintaining pointer correctness.
 
 ---
 
-## Loop Detection
-- Detects cycles using Floyd’s algorithm
-- Can identify:
-  - whether a loop exists
-  - starting node of the loop
-  - loop length
-- Implemented as a **structural safety check**, not user input behavior
+#### Playlist Transformations
+- `shufflePlaylist`
+- `reversePlaylist`
+- `removeDuplicates`
+
+These are **destructive operations** that change playlist structure and are therefore
+integrated with the undo mechanism.
 
 ---
 
-## Playlist Operations
-- Add song:
-  - at head
-  - at end
-  - before a given song
-  - after a given song
-- Delete song from any position
-- Print playlist
-- Supports song names with spaces (`getline`)
+#### Structural Validation Utilities
+- `hasLoop`
+- `findLoopStart`
+- `loopLength`
+- `findIntersection`
+
+These functions do **not rely on user input**.
+They are designed as **system-level safety checks** for linked list integrity,
+similar to classical linked list problems.
 
 ---
 
-## Transformations
-- Shuffle playlist
-- Reverse playlist
-- Remove duplicate songs
+#### Memory Management
+- `freePlaylist`
+
+Ensures:
+- all dynamically allocated nodes are deleted
+- no memory leaks occur during undo or program exit
 
 ---
 
-## Memory Management
-- All nodes are dynamically allocated and explicitly deallocated
-- `freePlaylist()` ensures safe cleanup
-- Undo history is fully cleared on program exit
-- Designed to avoid memory leaks and infinite traversal
+## Undo Mechanism (State Restoration)
+
+Undo is implemented using a **stack-based snapshot approach**.
+
+- A global `stack<Node*> history` stores previous playlist states
+- Before every destructive transformation:
+  - a **deep copy** of the current playlist is created
+  - the copy is pushed onto the stack
+- Undo operation:
+  - frees the current playlist
+  - restores the most recent snapshot from history
+- All stored snapshots are explicitly deleted on program exit
+
+This design avoids complex inverse logic and guarantees correctness.
+
+---
+
+
+## `main.cpp` — Control Flow
+- Implements a menu-driven interface
+- Separates user interaction into:
+  - Insert / Delete operations
+  - Transform operations
+  - Analysis operations
+- Manages undo integration and memory cleanup
 
 ---
 
