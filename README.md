@@ -10,9 +10,9 @@ rather than UI complexity.
 ## Code Organization & Responsibilities
 
 ### `playlist.h`
-- Defines the `Node` structure representing a song
-- Declares all playlist operations and system utilities
-- Acts as the contract between user interaction and core logic
+- Contains the `Node` structure
+- Declares all playlist-related functions
+- Used by `main.cpp` and `playlist.cpp`
 
 ---
 
@@ -127,7 +127,6 @@ This design avoids complex inverse logic and guarantees correctness.
 - Implementing undo using **state snapshots** instead of inverse operations
 - Memory-safe programming with explicit allocation and deallocation
 - Applying classical algorithms (Floyd’s cycle detection) in real systems
-- Structuring medium-sized C++ projects with headers, source files, and build scripts
 
 ---
 
