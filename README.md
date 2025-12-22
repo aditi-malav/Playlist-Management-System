@@ -108,9 +108,7 @@ rather than UI complexity.
 
 ---
 
-## Conclusion
-A system-oriented C++ project that emphasizes safe linked list transformations,
-structural validation, and state recovery through undo.
+
 
 
 
