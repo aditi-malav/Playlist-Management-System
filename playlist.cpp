@@ -26,6 +26,7 @@ Node* addSongAtEnd(Node* head,string name){
   
     return head;
 }
+
 Node* addSongAfter(Node* head,string afterSong,string newSong){
     if(head==NULL) return head;
     Node* temp=head;
@@ -97,6 +98,19 @@ Node* findLoopStart(Node* head){
         fast=fast->next;
     }
     return slow;
+}
+Node* removeLoop(Node* head){
+   if(!hasloop(head)) return 0;
+    Node* st=findLoopStart(head);
+     
+     Node* temp=st;
+     while(temp->next!=st){
+        
+        temp=temp->next;
+     }
+    temp->next=NULL;
+    return head;
+     
 }
 int loopLength(Node* head){
     if(!hasloop(head)) return 0;
@@ -248,5 +262,6 @@ Node* clonePlaylist(Node* head){
     }
     return newHead;
 }
+
 
 
