@@ -62,7 +62,7 @@ Node* addSongBefore(Node* head,string beforeSong,string newSong){
 }
 void printPlaylist(Node* head){
     if(hasloop(head)){
-        cout<<"Cannot pirnt: loop exisy"<<endl;
+        cout<<"Cannot print: loop exisy"<<endl;
         return;
     }
     Node* temp=head;
@@ -266,6 +266,7 @@ Node* clonePlaylist(Node* head){
     }
     return newHead;
 }
+
 
 
 
