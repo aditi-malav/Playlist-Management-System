@@ -1,4 +1,4 @@
-# Playlist-Management-System (C++)
+# Playlist-Management-System 
 
 ## Overview
 A menu-driven playlist management system implemented using a singly linked list.
