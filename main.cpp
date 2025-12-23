@@ -110,6 +110,7 @@ void analyzeOperations(Node* playlist){
         cout << "2 Check loop\n";
         cout << "3 Loop length\n";
         cout << "4 Loop start\n";
+        cout << "5 Break Loop\n";
         cout << "0 Back\n";
         cin>>ch;
         if(ch==0) break;
@@ -127,6 +128,10 @@ void analyzeOperations(Node* playlist){
             Node* st = findLoopStart(playlist);
             if(st) cout << "Loop starts at: " << st->songName << endl;
             else cout << "No loop\n";
+        }
+        else if(ch==5){
+            removeLoop(plyalist);
+            
         }
         else{
             cout<<"Invalid Operation"<<endl;
@@ -174,4 +179,5 @@ int main(){
     }
     }
     return 0;
+
 }
