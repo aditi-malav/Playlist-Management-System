@@ -130,8 +130,8 @@ void analyzeOperations(Node* playlist){
             else cout << "No loop\n";
         }
         else if(ch==5){
-           playlist= removeLoop(playlist);
-            cout<<"Loop removed"<<endl;
+           playlist= breakLoop(playlist);
+            cout<<"Loop broke"<<endl;
             
         }
         else{
@@ -182,4 +182,5 @@ int main(){
     return 0;
 
 }
+
 
