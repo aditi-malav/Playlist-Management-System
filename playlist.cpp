@@ -104,7 +104,7 @@ Node* findLoopStart(Node* head){
     return slow;
 }
 Node* breakLoop(Node* head){
-  
+    if(!hasloop(head)) return head;
     Node* st=findLoopStart(head);
      
      Node* temp=st;
@@ -266,6 +266,7 @@ Node* clonePlaylist(Node* head){
     }
     return newHead;
 }
+
 
 
 
