@@ -99,7 +99,7 @@ Node* findLoopStart(Node* head){
     }
     return slow;
 }
-Node* removeLoop(Node* head){
+Node* breakLoop(Node* head){
    if(!hasloop(head)) return 0;
     Node* st=findLoopStart(head);
      
@@ -262,6 +262,7 @@ Node* clonePlaylist(Node* head){
     }
     return newHead;
 }
+
 
 
 
