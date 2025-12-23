@@ -64,7 +64,7 @@ void insertOperations(Node* & playlist){
 }
 void transformOperations(Node*& playlist){
     int ch;
-    cin.ignore(1000, '\n');
+    
     while(true){
         cout << "Transform\n";
         cout << "1 Shuffle\n";
@@ -74,7 +74,7 @@ void transformOperations(Node*& playlist){
         cout << "0 Back\n";
 
         cin>>ch;
-
+        cin.ignore(1000, '\n');
         if(ch==0) break;
 
         else if(ch==1){
@@ -189,6 +189,7 @@ int main(){
     return 0;
 
 }
+
 
 
 
