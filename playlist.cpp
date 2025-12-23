@@ -61,6 +61,10 @@ Node* addSongBefore(Node* head,string beforeSong,string newSong){
     return head;
 }
 void printPlaylist(Node* head){
+    if(hasloop(head)){
+        cout<<"Cannot pirnt: loop exisy"<<endl;
+        return;
+    }
     Node* temp=head;
     while(temp!=NULL){
         cout<<temp->songName<<"->";
@@ -83,7 +87,7 @@ bool hasloop(Node* head){
     return false;
 }
 Node* findLoopStart(Node* head){
-    if(head==NULL || head->next==NULL) return head;
+    if(head==NULL || head->next==NULL) return NULL;
      Node* slow=head;
     Node* fast=head;
     while(fast && fast->next){
@@ -100,7 +104,7 @@ Node* findLoopStart(Node* head){
     return slow;
 }
 Node* breakLoop(Node* head){
-   if(!hasloop(head)) return head;
+  
     Node* st=findLoopStart(head);
      
      Node* temp=st;
@@ -262,6 +266,7 @@ Node* clonePlaylist(Node* head){
     }
     return newHead;
 }
+
 
 
 
