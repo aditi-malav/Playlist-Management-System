@@ -130,9 +130,13 @@ void analyzeOperations(Node* playlist){
             else cout << "No loop\n";
         }
         else if(ch==5){
-           playlist= breakLoop(playlist);
-            cout<<"Loop broke"<<endl;
-            
+            if(!hasLoop(playlist)){
+                cout<<"No loop found"<<endl;
+            }
+            else{
+                playlist= breakLoop(playlist);
+                cout<<"Loop broke"<<endl;
+            }
         }
         else{
             cout<<"Invalid Operation"<<endl;
@@ -182,5 +186,6 @@ int main(){
     return 0;
 
 }
+
 
 
