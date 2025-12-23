@@ -21,16 +21,19 @@ void insertOperations(Node* & playlist){
         if(ch==0) break;
         
         else if(ch==1){
+            history.push(clonePlaylist(playlist));
             cout<<"Enter song name: ";
             getline(cin, song);
             playlist=addSongAtHead(playlist,song);
         }
         else if(ch==2){
+            history.push(clonePlaylist(playlist));
             cout<<"Enter song name: ";
             getline(cin, song);
             playlist=addSongAtEnd(playlist, song);
         }
         else if(ch==3){
+            history.push(clonePlaylist(playlist));
             cout<<"Enter song after which you want to insert: ";
             getline(cin, ref);
             cout << "Enter new song name: ";
@@ -38,6 +41,7 @@ void insertOperations(Node* & playlist){
             playlist = addSongAfter(playlist,ref, song);
         }
         else if(ch==4){
+            history.push(clonePlaylist(playlist));
             cout<<"Enter song before which you want to insert: ";
             getline(cin, ref);
             cout << "Enter new song name: ";
@@ -45,6 +49,7 @@ void insertOperations(Node* & playlist){
             playlist = addSongBefore(playlist, ref, song);
         }
         else if(ch==5){
+            history.push(clonePlaylist(playlist));
             cout << "Enter song name to delete: ";
             getline(cin, song);
             playlist = deleteSong(playlist, song);
@@ -59,6 +64,7 @@ void insertOperations(Node* & playlist){
 }
 void transformOperations(Node*& playlist){
     int ch;
+    cin.ignore(1000, '\n');
     while(true){
         cout << "Transform\n";
         cout << "1 Shuffle\n";
@@ -102,7 +108,7 @@ void transformOperations(Node*& playlist){
         }
     }
 }
-void analyzeOperations(Node* playlist){
+void analyzeOperations(Node*& playlist){
     int ch;
     while(true){
         cout << "Analyze\n";
@@ -130,7 +136,7 @@ void analyzeOperations(Node* playlist){
             else cout << "No loop\n";
         }
         else if(ch==5){
-            if(!hasLoop(playlist)){
+            if(!hasloop(playlist)){
                 cout<<"No loop found"<<endl;
             }
             else{
@@ -186,6 +192,7 @@ int main(){
     return 0;
 
 }
+
 
 
 
