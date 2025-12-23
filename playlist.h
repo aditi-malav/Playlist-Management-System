@@ -19,6 +19,7 @@ void printPlaylist(Node* head);
 
 bool hasloop(Node* head);
 Node* findLoopStart(Node* head);
+Node* removeLoop(Node* head)
 int loopLength(Node* head);
 Node* findIntersection(Node* head1,Node* head2);
 
@@ -30,3 +31,4 @@ Node* clonePlaylist(Node* head);
 int playlistSize(Node* head);
 void freePlaylist(Node* head);
 #endif
+
